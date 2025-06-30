@@ -36,15 +36,6 @@ export class SerialMonitor {
 
   renderSidebar() {
     const sb = document.getElementById('sidebar');
-    const isAdmin = (window.loginInfo && window>loginInfo.role ==="admin");
-    if (isAdmin) {
-    sb.innerHTML += `<h3>Admin Controls</h3>
-    <button class="sidebtn accent" onclick="window.pgLogout()">Logout</button>`;
-    // You can add more admin controls here!
-  } else {
-    sb.innerHTML += `<button class="sidebtn" onclick="window.pgLogout()">Logout</button>`;
-  }
-}
     sb.innerHTML = `
       <h3>Serial Port</h3>
       <button id="serial-connect-btn" class="sidebtn">${this.connected ? 'Disconnect' : 'Connect'}</button>
@@ -60,6 +51,16 @@ export class SerialMonitor {
         <div id="tag-list"></div>
       </div>
     `;
+    
+    const isAdmin = (window.loginInfo && window.loginInfo.role === "admin");
+    if (isAdmin) {
+      sb.innerHTML += `<h3>Admin Controls</h3>
+      <button class="sidebtn accent" onclick="window.pgLogout()">Logout</button>`;
+      // You can add more admin controls here!
+    } else {
+      sb.innerHTML += `<button class="sidebtn" onclick="window.pgLogout()">Logout</button>`;
+    }
+    
     document.getElementById('serial-connect-btn').onclick = () => this.toggleSerial();
     document.getElementById('serial-baud').onchange = e => { this.baud = Number(e.target.value); };
     document.getElementById('serial-record-btn').onclick = () => this.toggleRecording();

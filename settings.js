@@ -7,21 +7,22 @@ export class Settings {
     this.colorScheme = 'gravity';
     this.interfaceScale = 1.1;
   }
- renderSidebar() {
-  const sb = document.getElementById('sidebar');
-  // ...your existing HTML building code for the sidebar...
 
-  // Add at the end:
-  const isAdmin = (window.loginInfo && window.loginInfo.role === "admin");
-  if (isAdmin) {
-    sb.innerHTML += `<h3>Admin Controls</h3>
-    <button class="sidebtn accent" onclick="window.pgLogout()">Logout</button>`;
-    // You can add more admin controls here!
-  } else {
-    sb.innerHTML += `<button class="sidebtn" onclick="window.pgLogout()">Logout</button>`;
+  renderSidebar() {
+    const sb = document.getElementById('sidebar');
+    // ...your existing HTML building code for the sidebar...
+
+    // Add at the end:
+    const isAdmin = (window.loginInfo && window.loginInfo.role === "admin");
+    if (isAdmin) {
+      sb.innerHTML += `<h3>Admin Controls</h3>
+      <button class="sidebtn accent" onclick="window.pgLogout()">Logout</button>`;
+      // You can add more admin controls here!
+    } else {
+      sb.innerHTML += `<button class="sidebtn" onclick="window.pgLogout()">Logout</button>`;
+    }
   }
-}
-  }
+
   openModal() {
     showModal(`
       <h2>Settings</h2>
@@ -52,6 +53,7 @@ export class Settings {
     document.getElementById('color-scheme').value = this.colorScheme;
     document.getElementById('ui-scale').value = this.interfaceScale;
   }
+
   save() {
     this.colorScheme = document.getElementById('color-scheme').value;
     this.interfaceScale = parseFloat(document.getElementById('ui-scale').value);
