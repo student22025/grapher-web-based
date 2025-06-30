@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Processing Grapher Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="assets/icon-48.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ...inside <body> before #topbar... -->
+<div id="login-container" style="display:none;">
+  <div id="login-box">
+    <h2>Processing Grapher Login</h2>
+    <label>
+      Username:
+      <input type="text" id="login-username" autocomplete="username">
+    </label>
+    <label>
+      Password:
+      <input type="password" id="login-password" autocomplete="current-password">
+    </label>
+    <button id="login-btn">Login</button>
+    <div id="login-error" style="color:red;min-height:2em;"></div>
+  </div>
+</div>
+  <div id="topbar">
+    <div id="tabs"></div>
+    <div id="topbar-title">
+      <img src="assets/icon-48.png" alt="icon" class="icon" />
+      <span>Processing Grapher Web</span>
+    </div>
+  </div>
+  <div id="main-container">
+    <div id="content-area"></div>
+    <div id="sidebar"></div>
+  </div>
+  <div id="bottombar"><div id="status-bar"></div></div>
+  <div id="modal" class="hidden"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
